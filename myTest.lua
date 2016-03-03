@@ -51,9 +51,9 @@ local function main()
   local t2 = spawn(task2)
   local t3 = spawn(counter, "counter2", 7)
   t0.priority = 1;
-  t1.priority = -1;
-  t2.priority = 1;
-  t3.priority = 0;
+  t1.priority = 2;
+  t2.priority = 3;
+  t3.priority = 1;
 
  while (true) do
     -- print("priorities: ", t1.priority, t2.priority)
