@@ -1,5 +1,5 @@
 --test_scheduler.lua
-package.path = package.path..";../?.lua"
+package.path = "./?.lua;"..package.path
 
 Scheduler = require("schedlua.scheduler")()
 Task = require("schedlua.task")
@@ -27,6 +27,10 @@ end
 
 local function task2()
   print("second task, only line")
+end
+
+local function task3()
+  print("third task, only line")
 end
 
 local function main()
