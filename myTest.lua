@@ -60,7 +60,7 @@ local function main()
     -- if t1:priority == "dead" and t2:getStatus() == "dead" then
     --   break;
     -- end
-    Scheduler:step()
+    myScheduler:step()
   end
 end
 
