@@ -101,12 +101,12 @@ function Scheduler.step(self)
   local task = self.TasksReadyToRun:dequeue()
   print('taskId:',task.TaskID)
   local nextTask = self.TasksReadyToRun:dequeue()
-    print('nexttaskId:',nextTask.TaskID)
 
   -- print('task: ',task,' nextTask: ',nextTask)
 
     -- check the priority of the current task and compare it to the next task in the list
   if nextTask then
+    print('nexttaskId:',nextTask.TaskID)
     print('in nextTask','task priority: ',task.priority,' nextTask priority: ',nextTask.priority)
     print('length',self.TasksReadyToRun:length())
     if task.priority < nextTask.priority then
