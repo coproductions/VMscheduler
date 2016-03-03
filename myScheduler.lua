@@ -100,7 +100,7 @@ function Scheduler.step(self)
   -- Now check the regular fibers
   local task = self.TasksReadyToRun:dequeue()
   print('taskId:',task.TaskID)
-  local nextTask = self.TasksReadyToRun:dequeue()
+  -- local nextTask = self.TasksReadyToRun:dequeue()
 
   -- print('task: ',task,' nextTask: ',nextTask)
 
