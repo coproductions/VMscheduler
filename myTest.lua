@@ -3,11 +3,11 @@ package.path = "./?.lua;"..package.path
 
 local myScheduler = require("myScheduler")()
 
-local myTask = require("myTask")
+-- local myTask = require("myTask")
 
--- local Kernel = require("schedlua.kernel")({Scheduler = myScheduler, Task = myTask})
+local Kernel = require("schedlua.kernel")({Scheduler = myScheduler})()
 
-local Kernel = require("schedlua.kernel")()
+-- local Kernel = require("schedlua.kernel")()
 
 
 local myReadyList = {};
@@ -46,7 +46,6 @@ end
 
 local function main()
   local t0 = spawn(counter, "counter1", 5)
-  t0.printHello()
   local t1 = spawn(task1)
   local t2 = spawn(task2)
   local t3 = spawn(counter, "counter2", 7)
