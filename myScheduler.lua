@@ -104,12 +104,14 @@ function Scheduler.step(self)
   -- print('taskId:',task.TaskID)
   -- print('first in queue after: ',self.TasksReadyToRun.first)
   print('length of list: ',self.TasksReadyToRun:length())
-  if self.TasksReadyToRun:length() > 0 then
-    local nextTask = self.TasksReadyToRun:dequeue()
-    print('local created, new length of list: ',self.TasksReadyToRun:length())
+  local nextTask = self.TasksReadyToRun:dequeue()
+  print('local created, new length of list: ',self.TasksReadyToRun:length())
+  if nextTask then
+    print('next task is not null so it will be replaced')
     self.TasksReadyToRun:pushFront(newTask)
     print('local requeued, new length of list: ',self.TasksReadyToRun:length())
-
+   else then
+    print('next task was nil')
   end
     -- print('nexttaskId:',nextTask.TaskID)
 
