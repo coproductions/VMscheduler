@@ -103,8 +103,10 @@ function Scheduler.step(self)
   print('first in queue after: ',self.TasksReadyToRun.first)
 
   print('taskId:',task.TaskID)
-  -- local nextTask = self.TasksReadyToRun:dequeue()
-
+  local nextTask = self.TasksReadyToRun:dequeue()
+    print('first in queue b4 requeue: ',self.TasksReadyToRun.first)
+self.TasksReadyToRun:pushFront(newTask)
+    print('first in queue after requeue: ',self.TasksReadyToRun.first)
   -- print('task: ',task,' nextTask: ',nextTask)
 
     -- check the priority of the current task and compare it to the next task in the list
