@@ -96,12 +96,20 @@ function Scheduler.suspendCurrentFiber(self, ...)
   self.CurrentFiber.state = "suspended"
 end
 
+function Scheduler.incListCount(self, list, n)
+  n = n or 1
+  if self.list.counter then
+    self.list.counter = self.list.counter + n
+  else
+    self.list.counter = 1
+  end
+end
+
 function Scheduler.step(self)
   -- Now check the regular fibers
-  self.TasksReadyToRun.counter = 0
   local task = self.TasksReadyToRun:dequeue()
   local nextTask = self.TasksReadyToRun:dequeue()
-  self.TasksReadyToRun.counter = self.TasksReadyToRun.counter + 1
+  self.incListCount(self,TasksReadyToRun)
   -- print('local created, new length of list: ',self.TasksReadyToRun:length())
   if task and nextTask then
     print('ready to run list counter: ',self.TasksReadyToRun.counter)
