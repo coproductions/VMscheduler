@@ -98,11 +98,11 @@ end
 
 function Scheduler.step(self)
   -- Now check the regular fibers
-  print('first in queue b4: ',self.TasksReadyToRun.first)
+  -- print('first in queue b4: ',self.TasksReadyToRun.first)
   print('length of list: ',self.TasksReadyToRun:length())
   local task = self.TasksReadyToRun:dequeue()
   -- print('taskId:',task.TaskID)
-  print('first in queue after: ',self.TasksReadyToRun.first)
+  -- print('first in queue after: ',self.TasksReadyToRun.first)
   print('length of list: ',self.TasksReadyToRun:length())
   if self.TasksReadyToRun:length() > 0 then
     local nextTask = self.TasksReadyToRun:dequeue()
@@ -137,7 +137,7 @@ function Scheduler.step(self)
 
   -- If no fiber in ready queue, then just return
   if task == nil then
-    --print("Scheduler.step: NO TASK")
+    print("Scheduler.step: NO TASK")
     return true
   end
 
@@ -153,7 +153,7 @@ function Scheduler.step(self)
   -- We assume that some other part of the system is responsible for
   -- keeping track of the task, and rescheduling it when appropriate.
   if task.state == "suspended" then
-    --print("suspended task wants to run")
+    print("suspended task wants to run")
     return true;
   end
 
