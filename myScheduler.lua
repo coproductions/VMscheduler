@@ -102,8 +102,10 @@ function Scheduler.step(self)
   local task = self.TasksReadyToRun:dequeue()
   print('taskId:',task.TaskID)
   print('first in queue after: ',self.TasksReadyToRun.first)
-
+  print('length of list: ',self.TasksReadyToRun:length())
   local nextTask = self.TasksReadyToRun:dequeue()
+    print('length of list: ',self.TasksReadyToRun:length())
+
     print('nexttaskId:',nextTask.TaskID)
 
     print('first in queue b4 requeue: ',self.TasksReadyToRun.first)
