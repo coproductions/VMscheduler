@@ -28,19 +28,19 @@ end
 
 local function task1()
   print("first task, first line")
-  yield();
+  myScheduler:yield();
   print("first task, second line")
 end
 
 local function task2()
   print("second task, only line")
-  yield();
+  myScheduler:yield();
 end
 
 local function counter(name, nCount)
   for num in numbers(nCount) do
     print(name, num);
-    yield();
+  myScheduler:yield();
   end
   halt();
 end
