@@ -108,7 +108,7 @@ function Scheduler.step(self)
   print('local created, new length of list: ',self.TasksReadyToRun:length())
   if nextTask then
     print('next task is not null so it will be replaced')
-    self.TasksReadyToRun:pushFront(newTask)
+    self.TasksReadyToRun:pushFront(nextTask)
     print('local requeued, new length of list: ',self.TasksReadyToRun:length())
    else
     print('next task was nil')
@@ -140,6 +140,7 @@ function Scheduler.step(self)
   -- If no fiber in ready queue, then just return
   if task == nil then
     print("Scheduler.step: NO TASK")
+    halt()
     return true
   end
 
