@@ -98,9 +98,9 @@ end
 
 function Scheduler.step(self)
   -- Now check the regular fibers
-  print('first in queue b4: ',self.TasksReadyToRun.first.TastkID)
+  print('first in queue b4: ',self.TasksReadyToRun.first)
   local task = self.TasksReadyToRun:dequeue()
-  print('first in queue after: ',self.TasksReadyToRun.first.TastkID)
+  print('first in queue after: ',self.TasksReadyToRun.first)
 
   print('taskId:',task.TaskID)
   -- local nextTask = self.TasksReadyToRun:dequeue()
