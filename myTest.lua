@@ -1,6 +1,5 @@
 --test_scheduler.lua
 package.path = "./?.lua;"..package.path
-print(package.path)
 
 local myScheduler = require("myScheduler")()
 
@@ -35,6 +34,7 @@ end
 
 local function task2()
   print("second task, only line")
+  yield();
 end
 
 local function counter(name, nCount)
@@ -50,7 +50,20 @@ local function main()
   local t1 = spawn(task1)
   local t2 = spawn(task2)
   local t3 = spawn(counter, "counter2", 7)
+  t0:priority = 1;
+  t1:priority = -1;
+  t2:priority = 1;
+  t3:priority = 0;
+
+ while (true) do
+    print("priorities: ", t1:priority, t2:priority)
+    -- if t1:priority == "dead" and t2:getStatus() == "dead" then
+    --   break;
+    -- end
+    Scheduler:step()
+  end
 end
+
 
 run(main)
 
