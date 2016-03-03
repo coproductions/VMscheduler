@@ -114,7 +114,7 @@ function Scheduler.step(self)
           print('length',self.TasksReadyToRun:length())
 
     end
-    print(self.TasksReadyToRun)
+    self.TasksReadyToRun:Entries(print)
   end
 
   -- If no fiber in ready queue, then just return
