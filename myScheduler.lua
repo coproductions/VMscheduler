@@ -102,7 +102,7 @@ function Scheduler.step(self)
   local nextTask = self.TasksReadyToRun:dequeue()
 
     -- check the priority of the current task and compare it to the next task in the list
-  if nextTask
+  if nextTask then
     if task.priority < nextTask.priority
       self.TasksReadyToRun:pushFront(task)
       task = nextTask
