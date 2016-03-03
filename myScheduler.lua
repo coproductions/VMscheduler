@@ -97,7 +97,6 @@ function Scheduler.suspendCurrentFiber(self, ...)
 end
 
 function Scheduler.incListCount(self, list, n)
-  print('list:',list,'self:',self,'n:',n)
   n = n or 1
   if list.counter then
     list.counter = list.counter + n
