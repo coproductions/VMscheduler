@@ -1,11 +1,12 @@
 --test_scheduler.lua
 package.path = "./?.lua;"..package.path
+print(package.path)
 
 local myScheduler = require("myScheduler")()
 
 -- local myTask = require("myTask")
 
-local Kernel = require("schedlua.kernel")({Scheduler = myScheduler})()
+local Kernel = require("myKernel")({Scheduler = myScheduler})()
 
 -- local Kernel = require("schedlua.kernel")()
 
