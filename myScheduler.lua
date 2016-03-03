@@ -99,23 +99,23 @@ end
 function Scheduler.step(self)
   -- Now check the regular fibers
   local task = self.TasksReadyToRun:dequeue()
-  local nextTask = self.TasksReadyToRun:dequeue()
-  -- print('task: ',task,' nextTask: ',nextTask)
+  -- local nextTask = self.TasksReadyToRun:dequeue()
+  -- -- print('task: ',task,' nextTask: ',nextTask)
 
-    -- check the priority of the current task and compare it to the next task in the list
-  if nextTask then
-    print('in nextTask','task: ',task, 'priority: ',task.priority,' nextTask: ',nextTask,'priority: ',task.priority)
-    print('length',self.TasksReadyToRun:length())
-    if task.priority < nextTask.priority then
-      self.TasksReadyToRun:pushFront(task)
-      task.state = "readytorun"
-      task = nextTask
-      print('switched tasks')
-          print('length',self.TasksReadyToRun:length())
+  --   -- check the priority of the current task and compare it to the next task in the list
+  -- if nextTask then
+  --   print('in nextTask','task: ',task, 'priority: ',task.priority,' nextTask: ',nextTask,'priority: ',task.priority)
+  --   print('length',self.TasksReadyToRun:length())
+  --   if task.priority < nextTask.priority then
+  --     self.TasksReadyToRun:pushFront(task)
+  --     task.state = "readytorun"
+  --     task = nextTask
+  --     print('switched tasks')
+  --     print('length',self.TasksReadyToRun:length())
 
-    end
-    self.TasksReadyToRun:Entries(print)
-  end
+  --   end
+  --   self.TasksReadyToRun:Entries(print)
+  -- end
 
   -- If no fiber in ready queue, then just return
   if task == nil then
