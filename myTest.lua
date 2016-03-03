@@ -5,8 +5,9 @@ local myScheduler = require("myScheduler")()
 
 local myTask = require("myTask")
 
-local Kernel = require("schedlua.kernel")({Scheduler = myScheduler, Task = myTask})
+-- local Kernel = require("schedlua.kernel")({Scheduler = myScheduler, Task = myTask})
 
+local Kernel = require("schedlua.kernel")()
 
 
 local myReadyList = {};
