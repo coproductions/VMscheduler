@@ -98,7 +98,8 @@ end
 
 function Scheduler.incListCount(self, list, n)
   n = n or 1
-  if self.list.counter then
+  print('list:',list,'self:',self)
+  if self[list]counter then
     self.list.counter = self.list.counter + n
   else
     self.list.counter = 1
