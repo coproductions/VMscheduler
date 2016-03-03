@@ -104,10 +104,15 @@ function Scheduler.step(self)
 
     -- check the priority of the current task and compare it to the next task in the list
   if nextTask then
+    print('in nextTask')
+    print('length',self.TasksReadyToRun:length())
     if task.priority < nextTask.priority then
       self.TasksReadyToRun:pushFront(task)
       task.state = "readytorun"
       task = nextTask
+      print('switched tasks')
+          print('length',self.TasksReadyToRun:length())
+
     end
   end
 
