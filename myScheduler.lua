@@ -101,7 +101,7 @@ function Scheduler.step(self)
   print('first in queue b4: ',self.TasksReadyToRun.first)
   print('length of list: ',self.TasksReadyToRun:length())
   local task = self.TasksReadyToRun:dequeue()
-  print('taskId:',task.TaskID)
+  -- print('taskId:',task.TaskID)
   print('first in queue after: ',self.TasksReadyToRun.first)
   print('length of list: ',self.TasksReadyToRun:length())
   if self.TasksReadyToRun:length() > 0 then
