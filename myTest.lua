@@ -56,7 +56,7 @@ local function main()
   t3.priority = 0;
 
  while (true) do
-    print("priorities: ", t1.priority, t2.priority)
+    -- print("priorities: ", t1.priority, t2.priority)
     -- if t1:priority == "dead" and t2:getStatus() == "dead" then
     --   break;
     -- end
