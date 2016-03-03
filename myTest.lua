@@ -3,11 +3,11 @@ package.path = package.path..";../?.lua"
 
 local myScheduler = require("myScheduler")()
 
-local Kernel = require("schedlua.kernel")({Scheduler = myScheduler})
+local myTask = require("myTask")
 
-function Task.printHello()
-  print "hello"
-end
+local Kernel = require("schedlua.kernel")({Scheduler = myScheduler, Task = myTask})
+
+
 
 local myReadyList = {};
 
