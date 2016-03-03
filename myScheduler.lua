@@ -102,9 +102,9 @@ function Scheduler.step(self)
   local task = self.TasksReadyToRun:dequeue()
   local nextTask = self.TasksReadyToRun:dequeue()
   self.TasksReadyToRun.counter = self.TasksReadyToRun.counter + 1
-  print('ready to run list counter: ',self.TasksReadyToRun.counter)
   -- print('local created, new length of list: ',self.TasksReadyToRun:length())
   if task and nextTask then
+    print('ready to run list counter: ',self.TasksReadyToRun.counter)
     if task.priority < nextTask.priority then
 
     -- print('next task is not null so it will be replaced')
