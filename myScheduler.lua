@@ -99,10 +99,10 @@ end
 function Scheduler.incListCount(self, list, n)
   n = n or 1
   print('list:',list,'self:',self)
-  if self[list]counter then
-    self.list.counter = self.list.counter + n
+  if list.counter then
+    list.counter = list.counter + n
   else
-    self.list.counter = 1
+    list.counter = 1
   end
 end
 
@@ -110,7 +110,7 @@ function Scheduler.step(self)
   -- Now check the regular fibers
   local task = self.TasksReadyToRun:dequeue()
   local nextTask = self.TasksReadyToRun:dequeue()
-  self.incListCount(self,TasksReadyToRun)
+  self.incListCount(self.TasksReadyToRun)
   -- print('local created, new length of list: ',self.TasksReadyToRun:length())
   if task and nextTask then
     print('ready to run list counter: ',self.TasksReadyToRun.counter)
