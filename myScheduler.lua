@@ -99,19 +99,19 @@ end
 function Scheduler.step(self)
   -- Now check the regular fibers
   -- print('first in queue b4: ',self.TasksReadyToRun.first)
-  print('length of list: ',self.TasksReadyToRun:length())
+  -- print('length of list: ',self.TasksReadyToRun:length())
   local task = self.TasksReadyToRun:dequeue()
   -- print('taskId:',task.TaskID)
   -- print('first in queue after: ',self.TasksReadyToRun.first)
-  print('length of list: ',self.TasksReadyToRun:length())
+  -- print('length of list: ',self.TasksReadyToRun:length())
   local nextTask = self.TasksReadyToRun:dequeue()
-  print('local created, new length of list: ',self.TasksReadyToRun:length())
+  -- print('local created, new length of list: ',self.TasksReadyToRun:length())
   if nextTask then
-    print('next task is not null so it will be replaced')
+    -- print('next task is not null so it will be replaced')
     self.TasksReadyToRun:pushFront(nextTask)
-    print('local requeued, new length of list: ',self.TasksReadyToRun:length())
+    -- print('local requeued, new length of list: ',self.TasksReadyToRun:length())
    else
-    print('next task was nil')
+    -- print('next task was nil')
   end
     -- print('nexttaskId:',nextTask.TaskID)
 
@@ -139,7 +139,7 @@ function Scheduler.step(self)
 
   -- If no fiber in ready queue, then just return
   if task == nil then
-    print("Scheduler.step: NO TASK")
+    -- print("Scheduler.step: NO TASK")
     halt()
     return true
   end
