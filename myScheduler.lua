@@ -107,11 +107,13 @@ function Scheduler.step(self)
   if self.TasksReadyToRun:length() > 0 then
     local nextTask = self.TasksReadyToRun:dequeue()
     print('local created, new length of list: ',self.TasksReadyToRun:length())
+    self.TasksReadyToRun:pushFront(newTask)
+    print('local requeued, new length of list: ',self.TasksReadyToRun:length())
+
   end
     -- print('nexttaskId:',nextTask.TaskID)
 
     -- print('first in queue b4 requeue: ',self.TasksReadyToRun.first)
--- self.TasksReadyToRun:pushFront(newTask)
     -- print('first in queue after requeue: ',self.TasksReadyToRun.first)
   -- print('task: ',task,' nextTask: ',nextTask)
 
