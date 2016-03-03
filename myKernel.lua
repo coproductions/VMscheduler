@@ -5,7 +5,7 @@
 --print("== KERNEL INCLUDED ==")
 
 -- local Scheduler = require("schedlua.scheduler")
-local Scheduler = require("myScheduler")()
+local Scheduler = require("myScheduler")
 
 local Task = require("schedlua.task")
 --local Queue = require("queue")
