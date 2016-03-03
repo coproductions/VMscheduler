@@ -100,12 +100,13 @@ function Scheduler.step(self)
   -- Now check the regular fibers
   local task = self.TasksReadyToRun:dequeue()
   local nextTask = self.TasksReadyToRun:dequeue()
-  print('task: ',task,' nextTask: ',nextTask)
+  -- print('task: ',task,' nextTask: ',nextTask)
 
     -- check the priority of the current task and compare it to the next task in the list
   if nextTask then
     if task.priority < nextTask.priority then
       self.TasksReadyToRun:pushFront(task)
+      task.state = "readytorun"
       task = nextTask
     end
   end
