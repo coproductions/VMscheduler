@@ -47,11 +47,11 @@ end
 
 local function main()
   local t0 = spawn(counter, "counter1", 5)
-  t0.priority = 1;
+  t0.priority = 0;
   local t1 = spawn(task1)
-  t1.priority = 2;
+  t1.priority = 1;
   local t2 = spawn(task2)
-  t2.priority = 3;
+  t2.priority = 0;
   local t3 = spawn(counter, "counter2", 7)
   t3.priority = 1;
 
