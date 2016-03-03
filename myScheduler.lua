@@ -110,7 +110,7 @@ function Scheduler.step(self)
     print('next task is not null so it will be replaced')
     self.TasksReadyToRun:pushFront(newTask)
     print('local requeued, new length of list: ',self.TasksReadyToRun:length())
-   else then
+   else
     print('next task was nil')
   end
     -- print('nexttaskId:',nextTask.TaskID)
