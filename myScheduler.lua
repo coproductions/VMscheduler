@@ -99,18 +99,18 @@ end
 function Scheduler.step(self)
   -- Now check the regular fibers
   print('first in queue b4: ',self.TasksReadyToRun.first)
+  print('length of list: ',self.TasksReadyToRun:length())
   local task = self.TasksReadyToRun:dequeue()
   print('taskId:',task.TaskID)
   print('first in queue after: ',self.TasksReadyToRun.first)
-  print('length of list: ',self.TasksReadyToRun:length())
-  local nextTask = self.TasksReadyToRun:dequeue()
+  -- local nextTask = self.TasksReadyToRun:dequeue()
     print('length of list: ',self.TasksReadyToRun:length())
 
-    print('nexttaskId:',nextTask.TaskID)
+    -- print('nexttaskId:',nextTask.TaskID)
 
-    print('first in queue b4 requeue: ',self.TasksReadyToRun.first)
-self.TasksReadyToRun:pushFront(newTask)
-    print('first in queue after requeue: ',self.TasksReadyToRun.first)
+    -- print('first in queue b4 requeue: ',self.TasksReadyToRun.first)
+-- self.TasksReadyToRun:pushFront(newTask)
+    -- print('first in queue after requeue: ',self.TasksReadyToRun.first)
   -- print('task: ',task,' nextTask: ',nextTask)
 
     -- check the priority of the current task and compare it to the next task in the list
