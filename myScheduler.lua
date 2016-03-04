@@ -32,7 +32,10 @@ local Scheduler_mt = {
 function Scheduler.init(self, ...)
   --print("==== Scheduler.init ====")
   local obj = {
-    TasksReadyToRun = Queue();
+    TasksReadyToRun1 = Queue();
+    TasksReadyToRun2 = Queue();
+
+
   }
   setmetatable(obj, Scheduler_mt)
 
@@ -48,7 +51,7 @@ end
 --]]
 
 function Scheduler.tasksPending(self)
-  return self.TasksReadyToRun:length();
+  return self.TasksReadyToRun1:length() + self.TasksReadyToRun2:length();
 end
 
 
@@ -71,7 +74,11 @@ function Scheduler.scheduleTask(self, task, params)
   end
 
   task:setParams(params);
-  self.TasksReadyToRun:enqueue(task);
+  if task.priority = 1 then
+    self.TasksReadyToRun:enqueue1(task);
+  else
+    self.TasksReadyToRun:enqueue2(task);
+  end
   task.state = "readytorun"
 
   return task;
@@ -105,25 +112,48 @@ function Scheduler.incListCount(self, list, n)
   end
 end
 
+function Scheduler.resetListCounter(self, list)
+  list.counter = 0
+end
+
+function Scheduler.determineRunList(self)
+  local high = self.TasksReadyToRun1
+  local low = self.TasksReadyToRun2
+  if high.counter < 3 and high:length() > 0 then
+    self.resetListCounter(self,low)
+    return high
+  elseif high.counter > 10 then
+    self.resetListCounter(self,high)
+    return low
+  elseif low:length() > low:length()*3 then
+    self.resetListCounter(self,high)
+    return low
+  else
+    self.resetListCounter(self,low)
+    return high
+  end
+end
+
+
 function Scheduler.step(self)
   -- Now check the regular fibers
-  local task = self.TasksReadyToRun:dequeue()
-  local nextTask = self.TasksReadyToRun:dequeue()
-  self.incListCount(self,self.TasksReadyToRun,4)
+  local runList = self.determineRunList(self)
+  local task = self[runList]:dequeue()
+  self.incListCount(self,runList)
   -- print('local created, new length of list: ',self.TasksReadyToRun:length())
-  if task and nextTask then
-    print('ready to run list counter: ',self.TasksReadyToRun.counter)
-    if task.priority < nextTask.priority then
+  -- if task and nextTask then
+  --   print('ready to run list counter: ',self.TasksReadyToRun.counter)
+  --   if task.priority < nextTask.priority then
 
-    -- print('next task is not null so it will be replaced')
-      self.TasksReadyToRun:pushFront(task)
-      task = nextTask
-    -- print('local requeued, new length of list: ',self.TasksReadyToRun:length())
-    else
-      self.TasksReadyToRun:pushFront(nextTask)
-    end
-    -- print('next task was nil')
-  end
+  --   -- print('next task is not null so it will be replaced')
+  --     self.TasksReadyToRun:pushFront(task)
+  --     task = nextTask
+  --   -- print('local requeued, new length of list: ',self.TasksReadyToRun:length())
+  --   else
+  --     self.TasksReadyToRun:pushFront(nextTask)
+  --   end
+  --   -- print('next task was nil')
+  -- end
     -- print('nexttaskId:',nextTask.TaskID)
 
     -- print('first in queue b4 requeue: ',self.TasksReadyToRun.first)
@@ -151,7 +181,6 @@ function Scheduler.step(self)
   -- If no fiber in ready queue, then just return
   if task == nil then
     -- print("Scheduler.step: NO TASK")
-    halt()
     return true
   end
 
