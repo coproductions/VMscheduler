@@ -1,5 +1,5 @@
 --test_scheduler.lua
-package.path = "./?.lua;"..package.path
+package.path = "./?.lua;/usr/local/share/lua/5.1/schedlua"..package.path
 
 local myScheduler = require("myScheduler")()
 

@@ -1,6 +1,6 @@
 --test_async_socket.lua
 -- package.path = package.path..";../?.lua"
-package.path = "./?.lua;"..package.path
+package.path = "./?.lua;/usr/local/share/lua/5.1/schedlua;"..package.path
 
 --[[
 	Simple networking test case.
