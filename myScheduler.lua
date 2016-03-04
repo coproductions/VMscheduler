@@ -144,7 +144,7 @@ end
 function Scheduler.step(self)
   -- Now check the regular fibers
   local runList = self.determineRunList(self)
-  local task = self[runList]:dequeue()
+  local task = runList:dequeue()
   self.incListCount(self,runList)
   -- print('local created, new length of list: ',self.TasksReadyToRun:length())
   -- if task and nextTask then
