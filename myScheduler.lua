@@ -75,9 +75,9 @@ function Scheduler.scheduleTask(self, task, params)
 
   task:setParams(params);
   if task.priority == 1 then
-    self.TasksReadyToRun:enqueue1(task);
+    self.TasksReadyToRun1:enqueue(task);
   else
-    self.TasksReadyToRun:enqueue2(task);
+    self.TasksReadyToRun2:enqueue(task);
   end
   task.state = "readytorun"
 
