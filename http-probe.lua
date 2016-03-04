@@ -79,8 +79,8 @@ local function probeSite(sitename)
 		return false, err
 	end
 	-- issue a request so we have something to read
-	httpRequest(s, sitename);
-	httpResponse(s);
+	-- httpRequest(s, sitename);
+	-- httpResponse(s);
 
 	s:close();
 end
