@@ -119,6 +119,12 @@ end
 function Scheduler.determineRunList(self)
   local high = self.TasksReadyToRun1
   local low = self.TasksReadyToRun2
+  if not high.counter then
+    high.counter = 0
+  end
+  if not low.counter then
+    low.counter = 0
+  end
   if high.counter < 3 and high:length() > 0 then
     self.resetListCounter(self,low)
     return high
