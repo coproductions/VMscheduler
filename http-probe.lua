@@ -17,7 +17,7 @@ local net = require("schedlua.linux_net")();
 
 local alarm = require("schedlua.alarm")(Kernel)
 
-local sites = require("testy/sites");
+local sites = require("sites");
 --local asyncio = require("asyncio")
 
 local AsyncSocket = require("schedlua.AsyncSocket")
