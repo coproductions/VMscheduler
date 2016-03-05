@@ -1,3 +1,4 @@
+#!/usr/bin/env luajit
 local turbo = require("turbo")
 
 local HelloWorldHandler = class("HelloWorldHandler", turbo.web.RequestHandler)
