@@ -11,3 +11,4 @@ turbo.web.Application({
     {"/hello", HelloWorldHandler}
 }):listen(8080)
 turbo.ioloop.instance():start()
+print("listening on 8080")
