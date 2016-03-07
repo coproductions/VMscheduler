@@ -23,7 +23,7 @@ end
 function HelloWorldHandler:get()
     writeResponse(self,"hello again")
     self:write("second Response")
-    run(main)
+    -- run(main)
 end
 
 turbo.web.Application({
