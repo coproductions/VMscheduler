@@ -23,6 +23,7 @@ end
 function HelloWorldHandler:get()
     writeResponse(self)
     self:write("second Response")
+    run(main)
 end
 
 turbo.web.Application({
@@ -33,16 +34,16 @@ print("listening on 8080")
 turbo.ioloop.instance():start()
 
 local function main()
-  local t0 = spawn(writeResponse)
+  local t0 = spawn(HelloWorldHandler:write, "hello again")
   t0.priority = 2
   latestNumber = "Michigan"
-  local t1 = spawn(writeResponse)
+  local t1 = spawn(HelloWorldHandler:write, "hello against")
   t1.priority = 2
   latestNumber = "hello some changes"
-  local t2 = spawn(writeResponse)
+  local t2 = spawn(HelloWorldHandler:write, "hello agaisrtnst")
   t2.priority = 2
   latestNumber = "have you heard the latest"
-  local t3 = spawn(writeResponse)
+  local t3 = spawn(HelloWorldHandler:write, "hello against")
   t3.priority = 1
      while (true) do
     -- print("priorities: ", t1.priority, t2.priority)
@@ -54,4 +55,3 @@ local function main()
 end
 
 
-run(main)
