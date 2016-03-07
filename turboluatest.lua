@@ -4,9 +4,9 @@ local turbo = require("turbo")
 local HelloWorldHandler = class("HelloWorldHandler", turbo.web.RequestHandler)
 
 
-local latestNumber = "hello"
+local latestNumber = "hello from latest"
 local function writeResponse(self)
-    self:write("hello there")
+    self:write(latestNumber)
 end
 
 function HelloWorldHandler:get()
