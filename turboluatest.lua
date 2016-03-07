@@ -5,12 +5,12 @@ local HelloWorldHandler = class("HelloWorldHandler", turbo.web.RequestHandler)
 
 
 local latestNumber = "hello"
-local writeResponse = function(it)
-    return self:write(it)
+local writeResponse = function()
+    return HelloWorldHandler:write
 end
 
 function HelloWorldHandler:get()
-    writeResponse("hello")
+    writeResponse()("iarosetn")
 end
 
 turbo.web.Application({
