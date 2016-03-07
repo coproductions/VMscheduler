@@ -23,7 +23,7 @@ end
 function HelloWorldHandler:get()
     writeResponse(self,"hello again")
     self:write("second Response")
-    
+    print("got this far")
      local t0 = spawn(writeResponse, self, "hello again")
   t0.priority = 2
   latestNumber = "Michigan"
