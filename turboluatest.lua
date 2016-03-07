@@ -6,7 +6,7 @@ local HelloWorldHandler = class("HelloWorldHandler", turbo.web.RequestHandler)
 
 local latestNumber = "hello"
 local writeResponse = function(it)
-    return HelloWorldHandler:write(it)
+    return self:write(it)
 end
 
 function HelloWorldHandler:get()
