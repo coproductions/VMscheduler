@@ -21,9 +21,28 @@ local function writeResponse(self,whatever)
 end
 
 function HelloWorldHandler:get()
-    writeResponse(HelloWorldHandler,"hello again")
+    writeResponse(self,"hello again")
     self:write("second Response")
-    -- run(main)
+    
+     local t0 = spawn(writeResponse, self, "hello again")
+  t0.priority = 2
+  latestNumber = "Michigan"
+  local t1 = spawn(writeResponse, self, "hello against")
+  t1.priority = 2
+  latestNumber = "hello some changes"
+  local t2 = spawn(writeResponse, self, "hello agaisrtnst")
+  t2.priority = 2
+  latestNumber = "have you heard the latest"
+  local t3 = spawn(writeResponse, self, "hello against")
+  t3.priority = 1
+     while (true) do
+    -- print("priorities: ", t1.priority, t2.priority)
+    -- if t1:priority == "dead" and t2:getStatus() == "dead" then
+    --   break;
+    -- end
+    myScheduler:step()
+  end
+
 end
 
 turbo.web.Application({
@@ -33,25 +52,5 @@ print("listening on 8080")
 
 turbo.ioloop.instance():start()
 
-local function main()
-  local t0 = spawn(writeResponse, HelloWorldHandler, "hello again")
-  t0.priority = 2
-  latestNumber = "Michigan"
-  local t1 = spawn(writeResponse, HelloWorldHandler, "hello against")
-  t1.priority = 2
-  latestNumber = "hello some changes"
-  local t2 = spawn(writeResponse, HelloWorldHandler, "hello agaisrtnst")
-  t2.priority = 2
-  latestNumber = "have you heard the latest"
-  local t3 = spawn(writeResponse, HelloWorldHandler, "hello against")
-  t3.priority = 1
-     while (true) do
-    -- print("priorities: ", t1.priority, t2.priority)
-    -- if t1:priority == "dead" and t2:getStatus() == "dead" then
-    --   break;
-    -- end
-    myScheduler:step()
-  end
-end
 
 
