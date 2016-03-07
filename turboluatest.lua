@@ -21,7 +21,7 @@ local function writeResponse(self,whatever)
 end
 
 function HelloWorldHandler:get()
-    writeResponse(self,"hello again")
+    writeResponse(HelloWorldHandler,"hello again")
     self:write("second Response")
     -- run(main)
 end
