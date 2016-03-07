@@ -31,7 +31,7 @@ function HelloWorldHandler:get()
     self:write("second Response")
     print("got this far")
     
-    spawn(task2)
+    -- spawn(task2)
 --   local t0 = spawn(writeResponse, self, "hello again")
 --   t0.priority = 2
 --   latestNumber = "Michigan"
@@ -45,13 +45,13 @@ function HelloWorldHandler:get()
 --   t3.priority = 1
   print("got even further")
    
-   while (true) do
-    -- print("priorities: ", t1.priority, t2.priority)
-    -- if t1:priority == "dead" and t2:getStatus() == "dead" then
-    --   break;
-    -- end
-    myScheduler:step()
-  end
+--    while (true) do
+--     -- print("priorities: ", t1.priority, t2.priority)
+--     -- if t1:priority == "dead" and t2:getStatus() == "dead" then
+--     --   break;
+--     -- end
+--     myScheduler:step()
+--   end
 
 end
 
