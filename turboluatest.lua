@@ -3,8 +3,12 @@ local turbo = require("turbo")
 
 local HelloWorldHandler = class("HelloWorldHandler", turbo.web.RequestHandler)
 
+
+local latestNumber = 0
+local writeResponse = HelloWorldHandler:write(latestNumber)
+
 function HelloWorldHandler:get()
-    self:write("Hello World!")
+    writeResponse()
 end
 
 turbo.web.Application({

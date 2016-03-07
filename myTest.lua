@@ -1,5 +1,5 @@
 --test_scheduler.lua
-package.path = "./?.lua;/usr/local/share/lua/5.1/schedlua"..package.path
+package.path = "./?.lua;"..package.path
 
 local myScheduler = require("myScheduler")()
 
@@ -36,6 +36,7 @@ local function task2()
   print("second task, only line")
   yield();
 end
+
 
 local function counter(name, nCount)
   for num in numbers(nCount) do

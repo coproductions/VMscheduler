@@ -90,7 +90,6 @@ function Scheduler.removeFiber(self, fiber)
   --print("REMOVING DEAD FIBER: ", fiber);
   return true;
 end
-
 function Scheduler.inMainFiber(self)
   return coroutine.running() == nil;
 end
