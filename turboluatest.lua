@@ -22,6 +22,7 @@ end
 
 function HelloWorldHandler:get()
     writeResponse(self)
+    writeResponse("second Resposne")
 end
 
 turbo.web.Application({
